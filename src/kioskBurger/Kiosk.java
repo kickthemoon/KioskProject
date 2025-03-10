@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Kiosk {
 
     Scanner sc = new Scanner(System.in);
+    Menu inMenu = new Menu();
 
     private int choose;
     private boolean turnOff = false;
@@ -35,10 +36,12 @@ public class Kiosk {
 
                 // 0 입력시 종료, 그외 각 카테고리 불러오기
                 if(choose != 0) {
-
+                    inMenu.setChooseNum(choose); // 초이스 값 메뉴클래스로 넘기기
                     // 카테고리 메뉴 보여주기
                     while (true) {
+
                         System.out.println("[ BURGERS MENU ]");
+                        System.out.println(inMenu.getChooseNum());
                         for (int i = 0; i < menu.size(); i++) {
                             System.out.println((i + 1) + ". " + menu.get(i).getMenuName());
                         }
@@ -52,7 +55,7 @@ public class Kiosk {
                             continue;
                         }
 
-                        if (choose < 0 || choose > 4) {
+                        if (choose < 0 || choose > menu.size()) {
                             System.out.println("잘못 입력 하셨습니다.");
                         } else {
                             if (choose != 0) {
