@@ -10,8 +10,8 @@ public class Kiosk {
 
     Scanner sc = new Scanner(System.in);
 
-    int chooseMain;
-    boolean turnOff = false;
+    private int chooseMain;
+    private boolean turnOff = false;
 
     public Kiosk() {
         menuItems.add(new MenuItem("ShackBurger   ",6.9,"토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
@@ -41,9 +41,21 @@ public class Kiosk {
                 System.out.println("잘못 입력 하셨습니다.");
             } else {
                 if(chooseMain != 0) {
-                    System.out.println(menuItems.get(chooseMain-1).getMenuName() + "| W "
-                            + menuItems.get(chooseMain-1).getMenuPrice() + " | "
-                            + menuItems.get(chooseMain-1).getMenuExplanation());
+                    while (true) {
+                        System.out.println(menuItems.get(chooseMain - 1).getMenuName() + "| W "
+                                + menuItems.get(chooseMain - 1).getMenuPrice() + " | "
+                                + menuItems.get(chooseMain - 1).getMenuExplanation());
+
+                        System.out.println("0. 뒤로가기");
+                        try {
+                            if(0 == sc.nextInt()){
+                                break;
+                            }
+                        } catch (Exception e) {
+                            sc.nextLine();
+                        }
+
+                    }
                 } else {
                     System.out.println("키오스크를 종료합니다.");
                     turnOff=true;
