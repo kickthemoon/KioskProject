@@ -4,36 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
-    private String burgers;
-    private String drinks;
-    private String desserts;
-    private int chooseNum;
 
     List<MenuItem> menuItems = new ArrayList<>();
 
-    public void setChooseNum(int num) {
-        this.chooseNum = num;
-    }
-
-    public int getChooseNum() {
-        return chooseNum;
-    }
-
-    public Menu() {
-        // menuBurgers();
-
+    public void switchMenu(int chooseNum) {
         switch (chooseNum) {
-            case 1:
-                menuBurgers();
-                break;
-            case 2:
-                menuDrigks();
-                break;
-            case 3:
-                menuDesserts();
-                break;
-            default:
-                System.out.println("그런건 존재 하지 않는다!");
+            case 1 -> menuBurgers();
+            case 2 -> menuDrigks();
+            case 3 -> menuDesserts();
         }
     }
 

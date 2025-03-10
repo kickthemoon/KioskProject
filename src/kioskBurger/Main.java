@@ -6,7 +6,6 @@ public class Main {
         Kiosk kiosk = new Kiosk();
         Menu menu = new Menu();
 
-        kiosk.start(menu.menuItems);
-
+        kiosk.start(menu);
     }
 }
