@@ -11,6 +11,7 @@ public class Menu {
     public List<MenuItem> getMenuItem() {
         List<MenuItem> tempArray = new ArrayList<>();
         tempArray.addAll(menuItems);
+        this.menuItems = new ArrayList<>();
         return tempArray;
     }
 

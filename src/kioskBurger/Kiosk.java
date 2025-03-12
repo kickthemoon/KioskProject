@@ -15,20 +15,23 @@ public class Kiosk {
     public void start(){
 
         do {
-            // 메인 메뉴 화면
-            System.out.println("[ MAIN MENU ] ");
-            System.out.println("1. Burgers ");
-            System.out.println("2. Drinks");
-            System.out.println("3. Desserts");
-            System.out.println("0. 종료");
+            while (true) {
+                // 메인 메뉴 화면
+                System.out.println("[ MAIN MENU ] ");
+                System.out.println("1. Burgers ");
+                System.out.println("2. Drinks");
+                System.out.println("3. Desserts");
+                System.out.println("0. 종료");
 
-            // 메인 메뉴 숫자외 입력 오류처리
-            try {
-                choose = sc.nextInt();
-                categoryChoose = choose;
-            } catch (Exception e) {
-                System.out.println("잘못 입력 하셨습니다.");
-                sc.nextLine();
+                // 메인 메뉴 숫자외 입력 오류처리
+                try {
+                    choose = sc.nextInt();
+                    categoryChoose = choose;
+                    break;
+                } catch (Exception e) {
+                    System.out.println("잘못 입력 하셨습니다.");
+                    sc.nextLine();
+                }
             }
 
             if (choose<0 || choose>3) {
@@ -80,7 +83,6 @@ public class Kiosk {
                                     }
                                 }
                             } else {
-                                menuList.clear(); // 배열 재사용을 위한 초기화
                                 break;
                             }
                         }
