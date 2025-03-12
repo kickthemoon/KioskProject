@@ -9,7 +9,6 @@ public class Kiosk {
     Menu menu = new Menu();
 
     private int choose;  // 입력값 저장
-    private int categoryChoose;  // 카테고리 변경을 막기 위한 입력값 저장
     private boolean turnOff = false;
 
     public void start(){
@@ -26,7 +25,6 @@ public class Kiosk {
                 // 메인 메뉴 숫자외 입력 오류처리
                 try {
                     choose = sc.nextInt();
-                    categoryChoose = choose;
                     break;
                 } catch (Exception e) {
                     System.out.println("잘못 입력 하셨습니다.");
@@ -40,12 +38,14 @@ public class Kiosk {
 
                 // 0 입력시 종료, 그외 각 카테고리 불러오기
                 if(choose != 0) {
-                    menu.chooseMenu(choose); // 초이스 값 메뉴클래스로 넘기기
+                    menu.setChooseNum(choose);
+                    menu.makeListMenu(choose); // 초이스 값 메뉴클래스로 넘기기
+
                     List<MenuItem> menuList = menu.getMenuItem();
 
                     // 버거 음료 디저트 선택 화면 출력
                     while (true) {
-                        System.out.println("[ "+ menu.menuCategory(categoryChoose) +" MENU ]");
+                        System.out.println("[ "+ menuList.get(choose - 1).getMenuCategory() +" MENU ]");
 
                         // 배열에 메뉴를 저장
                         for (int i = 0; i < menuList.size(); i++) {
@@ -68,7 +68,7 @@ public class Kiosk {
                             if (choose != 0) {
                                 // 배열에 있는 값 보여주기
                                 while (true) {
-                                    System.out.println("[ "+ menu.menuCategory(categoryChoose) +" ]  "
+                                    System.out.println("[ "+ menuList.get(choose - 1).getMenuCategory() +" ]  "
                                             + menuList.get(choose - 1).getMenuName() + "| W "
                                             + menuList.get(choose - 1).getMenuPrice() + " | "
                                             + menuList.get(choose - 1).getMenuExplanation());
@@ -92,7 +92,6 @@ public class Kiosk {
                     turnOff=true;
                 }
             }
-
         } while (!turnOff);
     }
 }
