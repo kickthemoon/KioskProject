@@ -37,7 +37,7 @@ public class Kiosk {
 
                 // 0 입력시 종료, 그외 각 카테고리 불러오기
                 if(choose != 0) {
-                    menu.switchMenu(choose); // 초이스 값 메뉴클래스로 넘기기
+                    menu.chooseMenu(choose); // 초이스 값 메뉴클래스로 넘기기
                     List<MenuItem> menuList = menu.getMenuItem();
 
                     // 버거 음료 디저트 선택 화면 출력

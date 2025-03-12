@@ -9,10 +9,12 @@ public class Menu {
     private String category;
 
     public List<MenuItem> getMenuItem() {
-        return menuItems;
+        List<MenuItem> tempArray = new ArrayList<>();
+        tempArray.addAll(menuItems);
+        return tempArray;
     }
 
-    public void switchMenu(int num) {
+    public void chooseMenu(int num) {
         switch (num) {
             case 1 -> menuBurgers();
             case 2 -> menuDrigks();
