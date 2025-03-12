@@ -5,9 +5,12 @@ import java.util.List;
 
 public class Menu {
 
-    List<MenuItem> menuItems = new ArrayList<>();
-
+    private List<MenuItem> menuItems = new ArrayList<>();
     private String category;
+
+    public List<MenuItem> getMenuItem() {
+        return menuItems;
+    }
 
     public void switchMenu(int num) {
         switch (num) {

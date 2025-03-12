@@ -6,6 +6,6 @@ public class Main {
         Menu menu = new Menu();
 
         Kiosk kiosk = new Kiosk();
-        kiosk.start(menu);
+        kiosk.start();
     }
 }
