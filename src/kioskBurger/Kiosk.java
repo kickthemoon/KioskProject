@@ -8,6 +8,7 @@ public class Kiosk {
     Scanner sc = new Scanner(System.in);
     Menu menu = new Menu();
     Cart cart = new Cart();
+    Payment payment = new Payment();
 
     public void start(){
 
@@ -62,7 +63,7 @@ public class Kiosk {
                                     if (cartSelect == 0) {
                                         break;
                                     } else if(cartSelect == 1) {
-                                        cart.saveShopCart(menuList.get(cartSelect - 1));
+                                        cart.saveShopCart(menuList.get(menuItemSelect - 1));
                                         System.out.println("장바구니에 담았습니다.");
                                         System.out.println("");
                                         break;
@@ -75,17 +76,28 @@ public class Kiosk {
                     }
                 } else if(menuSelect>3 && menuSelect<=5){
                     if(cart.getCartList().size()>0) {
-
                         switch (menuSelect) {
                             case 4:
-                                System.out.println("아래와 같이 주문 하시겠습니까?");
-                                System.out.println("");
-                                System.out.println("[ Orders ]");
-                                cart.showShopCart();
-                                System.out.println("[ Total ]");
-                                System.out.println("W "+cart.sumPrice());
-                                System.out.println("");
-                                System.out.println("1. 주문         2. 메뉴판");
+                                while (true) {
+                                    System.out.println("아래와 같이 주문 하시겠습니까?");
+                                    System.out.println("");
+                                    System.out.println("[ Orders ]");
+                                    cart.showShopCart();
+                                    System.out.println("[ Total ]");
+                                    System.out.println("W " + payment.sumPrice(cart));
+                                    System.out.println("");
+                                    System.out.println("1. 주문         2. 돌아가기");
+
+                                    int orderSelect = inputValidInt();
+
+                                    if (orderSelect == 1) {
+                                        System.out.println("주문이 완료 되었습니다. 금액은 W "+ payment.sumPrice(cart) +" 입니다.");
+                                        turnOff=true;
+                                        break;
+                                    } else if (orderSelect == 2) {
+                                        break;
+                                    }
+                                }
                                 break;
                             case  5:
                                 System.out.println("장바구니 지우기");

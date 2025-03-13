@@ -9,15 +9,16 @@ public class Menu {
     private String category;
     private int selectNum;
 
+    // 원본 데이터 사본 만들기
     public List<MenuItem> getMenuItem() {
-        List<MenuItem> tempArray = new ArrayList<>();
-        tempArray.addAll(menuItems);
-        this.menuItems = new ArrayList<>();
-        return tempArray;
+        List<MenuItem> tempMenuItems = new ArrayList<>();
+        tempMenuItems.addAll(menuItems);
+        this.menuItems = new ArrayList<>(); // 원본을 초기화로 중복 방지
+        return tempMenuItems;
     }
 
     public void setSelectNum(int selectNum) {
-        this.selectNum=selectNum;
+        this.selectNum = selectNum;
     }
 
     public void makeListMenu(int num) {
