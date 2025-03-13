@@ -2,6 +2,7 @@ package kioskBurger;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("확인용");
+        Kiosk kiosk = new Kiosk();
+        kiosk.start();
     }
 }
