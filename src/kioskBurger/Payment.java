@@ -12,10 +12,10 @@ public class Payment {
     }
 
     public enum Discounts {
-        nationalMeritoriousPerson("국가유공자", 10),
-        soldier("군인", 5),
-        student("학생",3),
-        common("일반",0);
+        NATIOANL_MERITORIOUS_PERSON("국가유공자", 10),
+        SOLDIER("군인", 5),
+        STUDENT("학생",3),
+        COMMON("일반",0);
 
         private final String status;
         private final int rate;
