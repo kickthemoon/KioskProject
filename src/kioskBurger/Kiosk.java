@@ -91,7 +91,32 @@ public class Kiosk {
                                     int orderSelect = inputValidInt();
 
                                     if (orderSelect == 1) {
-                                        System.out.println("주문이 완료 되었습니다. 금액은 W "+ payment.sumPrice(cart) +" 입니다.");
+                                        // System.out.println("주문이 완료 되었습니다. 금액은 W "+ payment.sumPrice(cart) +" 입니다.");
+                                        System.out.println("할인 정보를 입력해주세요.");
+                                        System.out.println("1. "+ Payment.Discounts.NATIOANL_MERITORIOUS_PERSON.getStatus() +" :  "+ Payment.Discounts.NATIOANL_MERITORIOUS_PERSON.getRate() +"%");
+                                        System.out.println("2. "+ Payment.Discounts.SOLDIER.getStatus() +"       :   "+ Payment.Discounts.SOLDIER.getRate() +"%");
+                                        System.out.println("3. "+ Payment.Discounts.STUDENT.getStatus() +"       :   "+ Payment.Discounts.STUDENT.getRate() +"%");
+                                        System.out.println("4. "+ Payment.Discounts.COMMON.getStatus() +"       :   "+ Payment.Discounts.COMMON.getRate() +"%");
+
+                                        int statusSelect = inputValidInt();
+
+                                        while (true){
+                                            if(statusSelect>=1 && statusSelect<=4){
+                                                double value;
+                                                Payment.Discounts status = null;
+
+                                                switch (statusSelect) {
+                                                    case 1 -> status = Payment.Discounts.NATIOANL_MERITORIOUS_PERSON;
+                                                    case 2 -> status = Payment.Discounts.SOLDIER;
+                                                    case 3 -> status = Payment.Discounts.STUDENT;
+                                                    case 4 -> status = Payment.Discounts.COMMON;
+                                                }
+                                                value = payment.sumPrice(cart)*((100-status.getRate())/100.0);
+                                                System.out.println("주문이 완료 되었습니다. 지불하실 금액은 W "+ value +" 입니다.");
+                                                System.out.println(payment.sumPrice(cart));
+                                                break;
+                                            }
+                                        }
                                         turnOff=true;
                                         break;
                                     } else if (orderSelect == 2) {
